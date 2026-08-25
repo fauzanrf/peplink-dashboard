@@ -1,7 +1,13 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  allowedDevOrigins: ['94.237.73.21', '94.237.73.21:3000', 'localhost:3000'],
+  allowedDevOrigins: [
+    '94.237.73.21',
+    '94.237.73.21:3000',
+    'localhost:3000',
+    'peplink-mobile.internetwork.net.id',
+    '*.internetwork.net.id'
+  ],
 };
 
 export default nextConfig;

@@ -75,8 +75,8 @@ export default function DashboardPage() {
     setIsRefreshing(true);
     try {
       const [gpsRes, wanRes] = await Promise.all([
-        fetch('/api/gps'),
-        fetch('/api/wan').catch(() => null) // Ignore wan fetch errors if any to not crash gps
+        fetch('/api/gps', { signal: AbortSignal.timeout(12000) }),
+        fetch('/api/wan', { signal: AbortSignal.timeout(12000) }).catch(() => null) // Ignore wan fetch errors if any to not crash gps
       ]);
 
       if (gpsRes.ok) {

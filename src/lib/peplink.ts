@@ -98,7 +98,8 @@ export async function getPeplinkAccessToken(): Promise<string> {
       'Accept': 'application/json'
     },
     body: bodyParams.toString(),
-    cache: 'no-store'
+    cache: 'no-store',
+    signal: AbortSignal.timeout(10000)
   });
 
   if (!response.ok) {
@@ -150,7 +151,8 @@ export async function fetchLiveGpsData(): Promise<GpsLocationData> {
       const devRes = await fetch(devListUrl, {
         method: 'GET',
         headers: { 'Authorization': `Bearer ${token}`, 'Accept': 'application/json' },
-        cache: 'no-store'
+        cache: 'no-store',
+        signal: AbortSignal.timeout(5000)
       });
       if (devRes.ok) {
         const devPayload = await devRes.json();
@@ -172,7 +174,8 @@ export async function fetchLiveGpsData(): Promise<GpsLocationData> {
         'Authorization': `Bearer ${token}`,
         'Accept': 'application/json'
       },
-      cache: 'no-store'
+      cache: 'no-store',
+      signal: AbortSignal.timeout(10000)
     });
 
     if (response.status === 401) {
@@ -184,7 +187,8 @@ export async function fetchLiveGpsData(): Promise<GpsLocationData> {
           'Authorization': `Bearer ${freshToken}`,
           'Accept': 'application/json'
         },
-        cache: 'no-store'
+        cache: 'no-store',
+        signal: AbortSignal.timeout(10000)
       });
     }
 
@@ -289,7 +293,8 @@ export async function fetchHistoricalGpsData(startTimeStr?: string, endTimeStr?:
         'Authorization': `Bearer ${token}`,
         'Accept': 'application/json'
       },
-      cache: 'no-store'
+      cache: 'no-store',
+      signal: AbortSignal.timeout(10000)
     });
 
     if (response.status === 401) {
@@ -301,7 +306,8 @@ export async function fetchHistoricalGpsData(startTimeStr?: string, endTimeStr?:
           'Authorization': `Bearer ${token}`,
           'Accept': 'application/json'
         },
-        cache: 'no-store'
+        cache: 'no-store',
+        signal: AbortSignal.timeout(10000)
       });
     }
 
@@ -444,7 +450,8 @@ export async function fetchLiveDeviceStatus(): Promise<PeplinkDeviceStatusRespon
         'Authorization': `Bearer ${token}`,
         'Accept': 'application/json'
       },
-      cache: 'no-store'
+      cache: 'no-store',
+      signal: AbortSignal.timeout(10000)
     });
 
     if (response.status === 401) {
@@ -456,7 +463,8 @@ export async function fetchLiveDeviceStatus(): Promise<PeplinkDeviceStatusRespon
           'Authorization': `Bearer ${token}`,
           'Accept': 'application/json'
         },
-        cache: 'no-store'
+        cache: 'no-store',
+        signal: AbortSignal.timeout(10000)
       });
     }
 
